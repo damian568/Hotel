@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Timers;
 
 namespace Hotel
 {
@@ -8,7 +10,7 @@ namespace Hotel
         {
             Console.WriteLine("Please select what you want to do:");
             Console.WriteLine("1 - Make a reservation;");
-            Console.WriteLine("2- List free rooms;");
+            Console.WriteLine("2 - List free rooms;");
             Console.WriteLine("3 - Checkout room;");
             Console.WriteLine("4 - Stats;");
             Console.WriteLine("5 - Find a room;");
@@ -28,9 +30,54 @@ namespace Hotel
 
                 int number = Int32.Parse(Console.ReadLine());
 
+                Console.WriteLine();
+
                 if(number == 1)
                 {
+                    Console.WriteLine("Enter room number: ");
+                    int numroom = Int32.Parse(Console.ReadLine());
 
+                    Console.WriteLine();
+
+                    Console.WriteLine("Start date: "); 
+
+                    var startDate = DateTime.ParseExact(Console.ReadLine(),
+                    "dd.MM.yyyy", CultureInfo.InvariantCulture);
+
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("dd - MM - yyyy Format: " + "\n" + startDate.ToString("dd - MM - yyyy"));
+                    Console.ResetColor();
+
+                    Console.WriteLine();
+
+                    Console.WriteLine("End date: ");
+
+                    var endDate = DateTime.ParseExact(Console.ReadLine(),
+                    "dd.MM.yyyy", CultureInfo.InvariantCulture);
+
+                    Console.WriteLine();
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("dd - MM - yyyy Format: " + "\n" + endDate.ToString("dd - MM - yyyy"));
+                    Console.ResetColor();
+
+                    Console.WriteLine();
+
+                    Console.WriteLine("Enter notes: ");
+                    string name = Console.ReadLine();
+
+                    Console.WriteLine();
+
+                    Console.WriteLine("Reservation was created!");
+
+                    Timer timer = new Timer();
+                    timer.Interval = 5000;
+
+                    Console.Clear();
+
+                    Console.WriteLine();
                 }
                 else if (number == 2)
                 {
