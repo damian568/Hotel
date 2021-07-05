@@ -131,7 +131,7 @@ namespace Hotel
                     //Timer timer = new Timer();
                     //timer.Interval = 5000;
 
-                    Console.Clear();
+                    //Console.Clear();
                 }
                 else if (number == 2)
                 {
