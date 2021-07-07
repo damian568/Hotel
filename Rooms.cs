@@ -105,5 +105,50 @@ namespace Hotel
         {
             return "Number of room: " + this.Number + "| Count of beds: " + this.Beds + "| Breakfast: " + this.Breakfast + "| View: " + this.View + "| Baby crib: " + this.Baby_crib;
         }
+
+        public static void printList()
+        {
+
+            List<int> rooms = new List<int>()
+            {
+                105, 106, 107, 108, 109, 110,
+                205, 206, 207, 208, 209, 210,
+                305, 306, 307, 308, 309, 310,
+                405, 406, 407, 408, 409, 410,
+            };
+            //List<int> rooms = new List<int>();
+            //rooms.Add(105);
+            //rooms.Add(106);
+            //rooms.Add(107);
+            //rooms.Add(108);
+            //rooms.Add(109);
+            //rooms.Add(110);
+
+            Console.WriteLine();
+
+            foreach (int aRooms in rooms)
+            {
+                Console.WriteLine(aRooms);
+            }
+
+            //int[,] rooms;
+
+            //rooms = new int[,]
+            //{
+            //    { 105, 106, 107, 108, 109, 110 },
+            //    { 205, 206, 207, 208, 209, 210 },
+            //    { 305, 306, 307, 308, 309, 310 },
+            //    { 405, 406, 407, 408, 409, 410 },
+            //};
+
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    for (int j = 0; j < 6; j++)
+            //    {
+            //        Console.WriteLine(rooms[i,j]);
+            //    }
+            //    Console.WriteLine();
+            //}
+        }
     }
 }
