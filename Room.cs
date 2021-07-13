@@ -165,31 +165,31 @@ namespace Hotel1
             //}
         }
 
-        public static void printTime()
-        {
-            Console.WriteLine("Start date: ");
+        //public static void printTime()
+        //{
+        //    Console.WriteLine("Start date: ");
 
-            var startDate = DateTime.ParseExact(Console.ReadLine(),
-            "dd.MM.yyyy", CultureInfo.InvariantCulture);
+        //    var startDate = DateTime.ParseExact(Console.ReadLine(),
+        //    "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("dd - MM - yyyy Format: " + "\n" + startDate.ToString("dd/MM/yyyy"));
-            Console.ResetColor();
+        //    Console.ForegroundColor = ConsoleColor.Green;
+        //    Console.WriteLine("dd - MM - yyyy Format: " + "\n" + startDate.ToString("dd/MM/yyyy"));
+        //    Console.ResetColor();
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            Console.WriteLine("End date: ");
+        //    Console.WriteLine("End date: ");
 
-            var endDate = DateTime.ParseExact(Console.ReadLine(),
-            "dd.MM.yyyy", CultureInfo.InvariantCulture);
+        //    var endDate = DateTime.ParseExact(Console.ReadLine(),
+        //    "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-            Console.WriteLine();
+        //    Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("dd - MM - yyyy Format: " + "\n" + endDate.ToString("dd/MM/yyyy"));
-            Console.ResetColor();
-        }
+        //    Console.ForegroundColor = ConsoleColor.Red;
+        //    Console.WriteLine("dd - MM - yyyy Format: " + "\n" + endDate.ToString("dd/MM/yyyy"));
+        //    Console.ResetColor();
+        //}
     }
 }

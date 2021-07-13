@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using static Hotel1.Room;
+using static Hotel1.SQL;
 using System.Globalization;
 using Hotel1;
 
@@ -220,6 +221,7 @@ namespace Hotel1Project
             {
 
                 connection.Open();
+                Console.WriteLine("Update your reservation!");
                 Console.WriteLine("Number for rooms");
                 int number = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("Count of beds");
@@ -280,7 +282,7 @@ namespace Hotel1Project
                 DateTime startdate = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine("End date ");
                 DateTime enddate = DateTime.Parse(Console.ReadLine());
-                string query = "SELECT * FROM Reservations WHERE Reservations.start_date = @startdate, Reservation.end_date = @enddate";
+                string query = "SELECT * FROM Reservations WHERE Reservations.start_date >= @startdate AND Reservations.end_date <= @enddate";
                 var command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@startdate", startdate);
                 command.Parameters.AddWithValue("@enddate", enddate);
@@ -299,9 +301,11 @@ namespace Hotel1Project
                 connection.Open();
                 Console.WriteLine("Start date and hour( like this 13:45:32)");
                 DateTime startdate = DateTime.Parse(Console.ReadLine());
-                string query = "SELECT * FROM Reservations WHERE @startdate NOT BETWEN start_date AND end_date";
+                
+                string query = "SELECT * FROM Reservations WHERE @startdate NOT BETWEEN start_date AND end_date";
                 var command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@startdate", startdate);
+                
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -319,10 +323,10 @@ namespace Hotel1Project
                 string room = "INSERT INTO Reservations (start_date, end_date) VALUES ( @start_date, @enddate)";
                 using (SqlCommand command = new SqlCommand(room, connection))
                 {
-                    
+
                     command.Parameters.AddWithValue("@start_date", start_date);
                     command.Parameters.AddWithValue("@enddate", enddate);
-                 
+
                     command.ExecuteNonQuery();
                 }
             }
@@ -462,45 +466,6 @@ namespace Hotel1Project
 
                     Console.WriteLine();
 
-                    //Console.WriteLine("Enter room number: ");
-                    //int numroom = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-
-                    //printTime();
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Enter count of beds: ");
-                    //int beds = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Want breakfast 1(Yes)/0(No): ");
-                    //int breakfast = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Which view want (sea, mountain, garden): ");
-                    //string view = Console.ReadLine();
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Want baby crib 1(Yes)/0(No): ");
-                    //int baby = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Enter notes: ");
-                    //string name = Console.ReadLine();
-
-                    //Console.WriteLine();
-
-                    //Room firstRoom = new Room(numroom, beds, breakfast, view, baby);
-                    //Console.WriteLine(firstRoom);
-
-                    //Console.WriteLine();
-
                     resrvationFunction();
                     Console.WriteLine("Reservation was created!");
                     //Timer timer = new Timer();
@@ -517,8 +482,6 @@ namespace Hotel1Project
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         connection.Open();
-                        //Console.WriteLine("Start date and hour( like this 13:45:32)");
-                        //DateTime startdate = DateTime.Parse(Console.ReadLine());
                         string query = "SELECT * FROM Reservations";
                         var command = new SqlCommand(query, connection);
                         SqlDataReader reader = command.ExecuteReader();
@@ -554,64 +517,19 @@ namespace Hotel1Project
 
                     }
                     deletefunction();
-                    //Console.WriteLine("Enter count of beds: ");
-                    //int beds = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-                    //printTime();
-                    //Console.WriteLine();
-                    
-                    ////selectFunction();
-                    //printRooms();
-                    ////selectFunction();
                 }
                 else if (number == 4)
                 {
                     statsfunction();
-                    //printTime();
-                    ////printRooms();
-                    //Console.WriteLine();
                 }
                 else if (number == 5)
                 {
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Enter number of beds: ");
-                    //int beds = Int32.Parse(Console.ReadLine());
-
-                    //Console.WriteLine();
-
-                    //printTime();
-
-                    //Console.WriteLine();
-
-                    //Console.WriteLine("Available rooms: ");
-                    //printRooms();
                     selectFunction();
                     Console.WriteLine();
                 }
                 else if (number == 6)
                 {
-                    //Console.WriteLine("Enter room number: ");
-                    //int numroom = Int32.Parse(Console.ReadLine());
-                    //Console.WriteLine();
-                    //Console.WriteLine("Enter count of beds: ");
-                    //int beds = Int32.Parse(Console.ReadLine());
-                    //Console.WriteLine();
-                    //Console.WriteLine("Want breakfast 1(Yes)/0(No): ");
-                    //int breakfast = Int32.Parse(Console.ReadLine());
-                    //Console.WriteLine();
-                    //Console.WriteLine("Which view want (sea, mountain, garden): ");
-                    //string view = Console.ReadLine();
-                    //Console.WriteLine();
-                    //Console.WriteLine("Want baby crib 1(Yes)/0(No): ");
-                    //int baby = Int32.Parse(Console.ReadLine());
-                    //Console.WriteLine();
-                    //Console.WriteLine("Enter notes: ");
-                    //string name = Console.ReadLine();
-                    //Console.WriteLine();
-                    //Room secondRoom = new Room(numroom, beds, breakfast, view, baby);
-                    //Console.WriteLine(secondRoom);
+
                     updateFunction();
                     Console.WriteLine("Reservation was update!");
                 }
